@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://ft76cibe5g8g"]
+[gd_scene load_steps=18 format=3 uid="uid://ft76cibe5g8g"]
 
 [ext_resource type="Script" path="res://WorldMap/Scripts/Game.gd" id="1_2txqc"]
 [ext_resource type="Script" path="res://WorldMap/Scripts/Camera.gd" id="2_3bt2u"]
@@ -10,12 +10,17 @@
 [ext_resource type="PackedScene" uid="uid://c1ubmr4ywp4y2" path="res://WorldMap/Objects/Player.tscn" id="6_3dsmr"]
 [ext_resource type="FontFile" uid="uid://cpgxxmcq0um5o" path="res://Assets/Fonts/Rubik-Bold.ttf" id="9_732j5"]
 [ext_resource type="Script" path="res://WorldMap/Scripts/UILayer.gd" id="9_cmpow"]
+[ext_resource type="PackedScene" uid="uid://bea7alp7ud30w" path="res://WorldMap/Objects/dice.tscn" id="11_e11wh"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_j2eje"]
 size = Vector3(30, 1, 30)
 
 [sub_resource type="BoxMesh" id="BoxMesh_6wh56"]
 size = Vector3(30, 1, 30)
+
+[sub_resource type="LabelSettings" id="LabelSettings_487tx"]
+font = ExtResource("9_732j5")
+font_size = 24
 
 [sub_resource type="LabelSettings" id="LabelSettings_b0dgw"]
 font = ExtResource("9_732j5")
@@ -59,6 +64,14 @@ Player = ExtResource("6_3dsmr")
 
 [node name="UILayer" type="CanvasLayer" parent="."]
 script = ExtResource("9_cmpow")
+
+[node name="Moves" type="Label" parent="UILayer"]
+offset_left = 2.0
+offset_top = 33.0
+offset_right = 98.0
+offset_bottom = 62.0
+text = "Moves: "
+label_settings = SubResource("LabelSettings_487tx")
 
 [node name="Coins" type="Label" parent="UILayer"]
 offset_right = 40.0
@@ -112,3 +125,5 @@ text = "End Turn"
 
 [node name="Timer" type="Timer" parent="."]
 one_shot = true
+
+[node name="Dice" parent="." instance=ExtResource("11_e11wh")]

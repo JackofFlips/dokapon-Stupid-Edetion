@@ -4,6 +4,7 @@ extends Node3D
 @onready var players = $Players
 @onready var UI = $UILayer
 @onready var timer = $Timer
+@onready var Dice_Roll = $Dice
 
 var main : Node = null
 var hostPlayer = null
@@ -68,6 +69,10 @@ func start_turn(player):
 		#rpc("sync_turn", currentPlayer.ID)
 		#print(multiplayer.get_unique_id(), ": ", currentPlayer.ID, "'s turn")
 	if player.ID == multiplayer.get_unique_id():
+		
+		var Roll = Dice_Roll.Roll()
+		UI.Set_Moves(Roll)
+		
 		player.start_turn()
 		print(multiplayer.get_unique_id(), ": starting turn")
 		UI.endTurn.show()
@@ -78,6 +83,7 @@ func start_turn(player):
 		#await turn_end
 	#if multiplayer.get_unique_id() == 1:
 		#currentPlayer = players.get_next_player(currentPlayer)
+
 
 #Processes the action performed by the player and relays it to the other clients
 @rpc('any_peer')

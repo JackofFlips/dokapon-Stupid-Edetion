@@ -1,7 +1,6 @@
 extends CharacterBody3D
 
 @export var button : PackedScene
-
 @onready var traverseButtons = $TraverseButtons
 
 var ID : int
@@ -16,8 +15,8 @@ signal turnFinished(action)
 var playerName : String = "player"
 var playerClass : String = "none"
 var level : int = 0
-
 var coins : int = 0
+
 
 var action = []
 
@@ -40,6 +39,10 @@ func _physics_process(delta):
 func start_turn():
 	action.clear()
 	create_buttons()
+	
+	
+	
+	
 
 func get_action():
 	return action

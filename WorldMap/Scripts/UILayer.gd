@@ -1,5 +1,8 @@
 extends CanvasLayer
 
+
+
+@onready var MovesLabel = $Moves
 @onready var coinsLabel = $Coins
 @onready var locationLabel = $Panel/VBoxContainer/LocationLabel
 @onready var typeLabel = $Panel/VBoxContainer/TypeLabel
@@ -15,3 +18,6 @@ func setLocation(locationName : String, type : String):
 
 func set_turn(playerName: String):
 	turnLabel.text = playerName + "'s turn"
+
+func Set_Moves(amount : int):
+	MovesLabel.text = "Moves: " + str(amount)
